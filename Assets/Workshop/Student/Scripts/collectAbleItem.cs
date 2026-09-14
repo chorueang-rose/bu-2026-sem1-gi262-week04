@@ -6,10 +6,17 @@ namespace Solution
     {
         public override bool Hit()
         {
-            Debug.Log("Item: " + Name + " has been picked up.");
-            // ทำลายไอเท็มออกจากฉาก
+            // ตรวจสอบว่ามี Reference ของ Inventory อยู่จริงก่อนเพิ่มไอเท็ม
+            if (mapGenerator != null && mapGenerator.player != null && mapGenerator.player.inventory != null)
+            {
+                mapGenerator.player.inventory.AddItem(Name, 1);
+            }
+            else
+            {
+                Debug.LogWarning("ไม่สามารถเพิ่มไอเท็มลง Inventory ได้ เนื่องจากอ้างอิงข้อมูลไม่พบ");
+            }
 
-            mapGenerator.player.inventory.AddItem(Name, 1);
+            // ทำลาย GameObject นี้ออกจากฉาก
             Destroy(gameObject);
 
             return true;
