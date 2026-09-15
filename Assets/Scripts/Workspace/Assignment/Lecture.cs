@@ -8,9 +8,9 @@ namespace Assignment
     {
         public void Start()
         {
-            // LCT01_SyntaxList();
+            //LCT01_SyntaxList();
             //LCT02_SyntaxLinkedList();
-            // LCT03_SyntaxHashTable();
+            LCT03_SyntaxHashTable();
             //LCT04_SyntaxDictionary();
         }
 
@@ -101,7 +101,14 @@ namespace Assignment
             table.Add(true, "");
             table.Add(0, 0);
             table[true] = 1;
+
+            // เพิ่มการวน Loop เพื่อนำข้อมูลออกมากดดูใน Console
+            foreach (DictionaryEntry entry in table)
+            {
+                Debug.Log($"Key: {entry.Key}, Value: {entry.Value}");
+            }
         }
+        
 
         public void LCT04_SyntaxDictionary()
         {
